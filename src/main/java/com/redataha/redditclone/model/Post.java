@@ -38,4 +38,8 @@ public class Post {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "subredditId", referencedColumnName = "id")
     private Subreddit subreddit;
+    private Integer commentCount;
+    private String duration;
+    private boolean upVote;
+    private boolean downVote;
 }

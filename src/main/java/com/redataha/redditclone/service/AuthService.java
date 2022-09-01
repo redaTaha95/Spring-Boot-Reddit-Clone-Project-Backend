@@ -1,6 +1,5 @@
 package com.redataha.redditclone.service;
 
-import com.redataha.redditclone.config.AppConfig;
 import com.redataha.redditclone.dto.AuthenticationResponse;
 import com.redataha.redditclone.dto.LoginRequest;
 import com.redataha.redditclone.dto.RefreshTokenRequest;
@@ -37,7 +36,6 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtProvider jwtProvider;
     private final RefreshTokenService refreshTokenService;
-    private final AppConfig appConfig;
 
     @Transactional
     public void signup(RegisterRequest registerRequest) {
@@ -56,7 +54,7 @@ public class AuthService {
                 user.getEmail(),
                 "Thank you for signing up to Reddit Clone, " +
                         "please click on the below url to activate your account: " +
-                        appConfig.getAppUrl() + "/api/auth/accountVerification/" + token
+                        "http://localhost:8080/api/auth/accountVerification/" + token
         ));
     }
 

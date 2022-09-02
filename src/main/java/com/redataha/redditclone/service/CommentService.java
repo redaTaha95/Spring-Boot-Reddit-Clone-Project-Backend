@@ -2,6 +2,7 @@ package com.redataha.redditclone.service;
 
 import com.redataha.redditclone.dto.CommentDto;
 import com.redataha.redditclone.exceptions.PostNotFoundException;
+import com.redataha.redditclone.exceptions.SpringRedditException;
 import com.redataha.redditclone.mapper.CommentMapper;
 import com.redataha.redditclone.model.Comment;
 import com.redataha.redditclone.model.NotificationEmail;
@@ -64,5 +65,12 @@ public class CommentService {
                 .stream()
                 .map(commentMapper::mapToDto)
                 .collect(toList());
+    }
+
+    public boolean containsSwearWords(String comment) {
+        if (comment.contains("shit")) {
+            throw new SpringRedditException("Comment contains unacceptable language");
+        }
+        return false;
     }
 }
